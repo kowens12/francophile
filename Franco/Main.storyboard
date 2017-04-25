@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="ZbO-vZ-yys">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="davidpumpkins" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-5f-U1l">
+                                <rect key="frame" x="0.0" y="200" width="375" height="268"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wj0-5f-U1l" secondAttribute="height" multiplier="1179:842" id="Zgz-jG-ghD"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="JjW-x5-S1D" appends="YES" id="lPz-IE-CZ2"/>
+                                    <outletCollection property="gestureRecognizers" destination="jLb-uD-svq" appends="YES" id="y9Z-O2-poo"/>
+                                </connections>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DY-cR-dWf">
+                                <rect key="frame" x="-4" y="623" width="383" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="OnY-Ab-baU">
+                                        <connections>
+                                            <action selector="addPhoto:" destination="BYZ-38-t0r" id="UsN-oL-Umc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7nW-wK-FjB"/>
+                                    <barButtonItem style="plain" id="h87-5n-DHn">
+                                        <inset key="imageInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="bRf-35-Rb3">
+                                            <rect key="frame" x="132" y="9.5" width="17.5" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="jamesFrancoButtonImage">
+                                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="aTC-oE-a46" kind="push" identifier="addFranco" id="Cqk-4s-w9L"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2mH-BD-p6Y"/>
+                                    <barButtonItem enabled="NO" style="plain" id="sdc-4L-Myq">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uyc-D3-MHS">
+                                            <rect key="frame" x="240" y="9.5" width="17.5" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="unFrancoButtonImage"/>
+                                            <connections>
+                                                <action selector="undoFranco:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bgp-WT-lgg"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="k9f-HA-obf"/>
+                                    <barButtonItem systemItem="action" id="GiW-e8-LGP">
+                                        <connections>
+                                            <action selector="shareFranco:" destination="BYZ-38-t0r" id="0SZ-3z-AOJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="3DY-cR-dWf" secondAttribute="trailing" constant="-20" id="91g-jM-zcr"/>
+                            <constraint firstItem="wj0-5f-U1l" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" id="AcX-Ks-UUZ"/>
+                            <constraint firstItem="3DY-cR-dWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="D2P-bc-b1c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3DY-cR-dWf" secondAttribute="bottom" id="ZPp-hq-SRb"/>
+                            <constraint firstItem="wj0-5f-U1l" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n61-01-y2T"/>
+                            <constraint firstItem="wj0-5f-U1l" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" id="sYN-Kc-Qfw"/>
+                            <constraint firstItem="wj0-5f-U1l" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ucZ-17-ksN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tis-Od-7eW"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="canvas" destination="8bC-Xf-vdC" id="1JV-4K-Zah"/>
+                        <outlet property="unFrancoButton" destination="sdc-4L-Myq" id="qDX-ex-ULf"/>
+                        <outlet property="userImage" destination="wj0-5f-U1l" id="UPE-Ld-O70"/>
+                        <outlet property="userImageAspectRatioConstraint" destination="Zgz-jG-ghD" id="qjg-Bn-AQY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="JjW-x5-S1D">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="tZL-25-adZ"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="jLb-uD-svq"/>
+            </objects>
+            <point key="canvasLocation" x="1280.5" y="394.5"/>
+        </scene>
+        <!--Franco Collection View Controller-->
+        <scene sceneID="a4I-6o-JLa">
+            <objects>
+                <collectionViewController id="aTC-oE-a46" customClass="FrancoCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="56q-0i-Rg7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e8p-L5-Sdy">
+                            <size key="itemSize" width="115" height="90"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="pbc-sR-S6y">
+                                <rect key="frame" x="0.0" y="0.0" width="115" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <size key="customSize" width="115" height="90"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="aTC-oE-a46" id="Ho1-LR-c6B"/>
+                            <outlet property="delegate" destination="aTC-oE-a46" id="qKP-Pf-exX"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="rzb-fj-F9t"/>
+                    <connections>
+                        <segue destination="0K9-9v-iPa" kind="unwind" identifier="addFranco" unwindAction="unwindForSegue:towardsViewController:" id="5Li-ty-aV0"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nv8-3Y-aAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0K9-9v-iPa" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1817.5" y="394.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o2q-vt-tmp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZbO-vZ-yys" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NDk-AI-WiZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1rB-dm-KiT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqx-Zk-TiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693.5" y="394.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="davidpumpkins" width="1179" height="842"/>
+        <image name="jamesFrancoButtonImage" width="17" height="25"/>
+        <image name="unFrancoButtonImage" width="17" height="25"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>

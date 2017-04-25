@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UIToolbarDelegate, UIScrollViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIImageView *userImage;
+@property (strong, nonatomic) IBOutlet UIImageView *francoImage;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollViewCanvas;
+@property (strong, nonatomic) IBOutlet UIView *canvas;
+@property (strong, nonatomic) IBOutlet UIImageView *francoImageView; 
+
+-(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+-(IBAction)addPhoto:(UIBarButtonItem *)sender;
+-(UIImage *)renderImage;
+- (void)drawFrancoImageWithContextSize:(CGSize)contextSize francoImageView:(UIImageView *)francoImageView;
 
 @end
 

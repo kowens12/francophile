@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "FrancoCollectionViewController.h"
+#import "Timer.h"
 
-@interface ViewController ()
+@interface ViewController () <UIImagePickerControllerDelegate, UIToolbarDelegate, UIScrollViewDelegate, UIActivityItemSource, UIAlertViewDelegate, UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userImageAspectRatioConstraint;
+@property (strong, nonatomic) NSMutableArray<UIImageView *> *francos;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *unFrancoButton;
 
 @end
 
@@ -16,12 +21,250 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setFranco:) name:@"francoNotification" object:nil];
+    self.francos = [NSMutableArray array];
+    
+   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveFrancoAfterInactivity:) name:@"appInactiveNotification" object:nil];
+}
+
+- (void)setFranco:(NSNotification *)notification {
+    NSDictionary *francoDictionary = notification.userInfo;
+    UIImage *newFrancoImage = [UIImage imageNamed: [francoDictionary objectForKey:@"newFranco"]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIImageView *newFrancoImageView = [[UIImageView alloc] initWithImage:newFrancoImage];
+        newFrancoImageView.userInteractionEnabled = YES;
+        [newFrancoImageView addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)]];
+        [newFrancoImageView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)]];
+        [self.canvas addSubview:newFrancoImageView];
+        [self.francos addObject:newFrancoImageView];
+        [self.unFrancoButton setEnabled:YES];
+    });
+}
+
+-(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
+    CGPoint translation = [recognizer translationInView:recognizer.view];
+    CGAffineTransform transform = recognizer.view.transform;
+    recognizer.view.transform = CGAffineTransformTranslate(transform, translation.x, translation.y);
+    [recognizer setTranslation:CGPointZero inView:recognizer.view];
+}
+
+
+- (IBAction)handlePinch:(UIPinchGestureRecognizer *)recognizer {
+    CGFloat scale = [recognizer scale];
+    CGAffineTransform transform = recognizer.view.transform;
+    recognizer.view.transform = CGAffineTransformScale(transform, scale, scale);
+    [recognizer setScale:1.0];
+}
+
+-(IBAction)addPhoto:(UIBarButtonItem *)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera == YES] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary == YES]) {
+        [self createAlertWithCameraAndLibrary];
+    }
+    
+    else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera == YES] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary == NO]) {
+        [self createAlertWithCameraAction];
+    }
+    
+    else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera == NO] && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary == YES]) {
+        [self createAlertWithLibraryAction];
+    }
+    else
+    {
+        [self createErrorAlert];
+    }
+}
+
+- (void)createAlertWithCameraAction {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo"
+                                                                   message:@"Take New Photo"
+                                                            preferredStyle:UIActionSheetStyleDefault];
+    
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take new photo"
+                                                           style:UIActionSheetStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                             picker.delegate = self;
+                                                             picker.allowsEditing = YES;
+                                                             [self presentViewController:picker animated:YES completion:NULL];
+                                                         }];
+    [alert addAction:cameraAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void)createAlertWithLibraryAction {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo"
+                                                                   message:@"Add Photo from Library"
+                                                            preferredStyle:UIActionSheetStyleDefault];
+    
+    UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:@"Add photo from library"
+                                                                 style:UIActionSheetStyleDefault
+                                                               handler:^(UIAlertAction *action) {
+                                                                   UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                                   picker.delegate = self;
+                                                                   picker.allowsEditing = YES;
+                                                                   picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                                   [self presentViewController:picker animated:YES completion:NULL];
+                                                               }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+    
+    [alert addAction:photoLibraryAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void)createAlertWithCameraAndLibrary {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo"
+                                                                   message:@"Take a Photo or Add from Library"
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take new photo"
+                                                           style:UIActionSheetStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                             picker.delegate = self;
+                                                             picker.allowsEditing = YES;
+                                                             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                                             [self presentViewController:picker animated:YES completion:nil];
+                                                         }];
+    UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:@"Add photo from library"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction *action) {
+                                                                   UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                                   picker.delegate = self;
+                                                                   picker.allowsEditing = YES;
+                                                                   picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                                   [self presentViewController:picker animated:YES completion:NULL];
+                                                               }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             [alert dismissViewControllerAnimated:YES completion:nil];
+                                                         }];
+    
+    
+    [alert addAction:cameraAction];
+    [alert addAction:photoLibraryAction];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+- (void)createErrorAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:@"Device cannot access camera"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        nil;
+    }];
+    
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.userImage.image = chosenImage;
+    self.userImageAspectRatioConstraint.constant = chosenImage.size.width / chosenImage.size.height;
+    
+    self.userImageAspectRatioConstraint.active = NO;
+    self.userImageAspectRatioConstraint = [NSLayoutConstraint constraintWithItem:self.userImage
+                                                                       attribute:NSLayoutAttributeWidth
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:self.userImage
+                                                                       attribute:NSLayoutAttributeHeight
+                                                                      multiplier:chosenImage.size.width / chosenImage.size.height
+                                                                        constant:0];
+    self.userImageAspectRatioConstraint.active = YES;
+    
+    [self.userImage setNeedsLayout];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)shareFranco:(id)sender {
+    [self createFrancoActivityViewController];
+}
+
+//- (void)saveFrancoAfterInactivity {
+//    [self renderImage];
+//    NSLog(@"saved");
+//}
+
+- (UIImage *)renderImage {
+    CGRect contextRect = (self.userImage.image ? (CGRect){0, 0, self.userImage.image.size} : self.view.bounds);
+    CGSize contextSize2 = contextRect.size;
+    
+    UIGraphicsBeginImageContextWithOptions(contextSize2, NO, 0.0);
+    
+    CGContextRef context2 = UIGraphicsGetCurrentContext();
+    
+    [self.userImage.image drawInRect:contextRect];
+    
+    for (UIImageView *francoImageView in self.francos) {
+        [self drawFrancoImageWithContextSize:contextSize2 francoImageView:francoImageView];
+    }
+    
+    UIImage *francodImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return francodImage;
+}
+
+- (void)drawFrancoImageWithContextSize:(CGSize)contextSize francoImageView:(UIImageView *)francoImageView {
+    CGRect francoImageFrameInView = [self.userImage convertRect:francoImageView.frame fromView:francoImageView.superview];
+
+    CGSize userImageViewSize = self.userImage.frame.size;
+    
+    CGFloat scaleFactor = contextSize.height / userImageViewSize.height;
+    CGRect scaledFrancoRect = CGRectMake(francoImageFrameInView.origin.x * scaleFactor,
+                                         francoImageFrameInView.origin.y * scaleFactor,
+                                         francoImageFrameInView.size.width * scaleFactor,
+                                         francoImageFrameInView.size.height * scaleFactor);
+    
+    [francoImageView.image drawInRect:scaledFrancoRect];
+}
+
+- (IBAction)undoFranco:(id)sender {
+    [[self.francos lastObject] removeFromSuperview];
+    [self.francos removeLastObject];
+    if (self.francos.count == 0) {
+        [self.unFrancoButton setEnabled: NO];
+    }
+}
+
+
+- (void) createFrancoActivityViewController{
+    NSString *francoTextToShare = @"Consider this Franco'd!";
+    UIImage *francoImageToShare = [self renderImage];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[francoTextToShare, francoImageToShare] applicationActivities:nil];
+    
+    
+    activityViewController.excludedActivityTypes = @[UIActivityTypeCopyToPasteboard, UIActivityTypePostToVimeo, UIActivityTypeAddToReadingList, UIActivityTypeOpenInIBooks, UIActivityTypePostToTencentWeibo, UIActivityTypePostToWeibo];
+    
+    [self.navigationController presentViewController:activityViewController animated:YES completion:^{
+    }];
 }
 
 @end

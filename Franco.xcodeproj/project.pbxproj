@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6512E99A1E92FD9E007F4A2D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6512E9991E92FD9E007F4A2D /* Launch Screen.storyboard */; };
+		6512E99C1E931072007F4A2D /* jamesFrancophileLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6512E99B1E931072007F4A2D /* jamesFrancophileLaunchScreen.storyboard */; };
+		652700D31E83FAC300C6AB00 /* FrancoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 652700D21E83FAC300C6AB00 /* FrancoCollectionViewController.m */; };
 		6538BDC11E2FEDA3004E9C70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6538BDC01E2FEDA3004E9C70 /* main.m */; };
 		6538BDC41E2FEDA3004E9C70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6538BDC31E2FEDA3004E9C70 /* AppDelegate.m */; };
 		6538BDC71E2FEDA3004E9C70 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6538BDC61E2FEDA3004E9C70 /* ViewController.m */; };
-		6538BDCA1E2FEDA3004E9C70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6538BDC81E2FEDA3004E9C70 /* Main.storyboard */; };
 		6538BDCC1E2FEDA3004E9C70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6538BDCB1E2FEDA3004E9C70 /* Assets.xcassets */; };
-		6538BDCF1E2FEDA3004E9C70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6538BDCD1E2FEDA3004E9C70 /* LaunchScreen.storyboard */; };
 		6538BDDA1E2FEDA3004E9C70 /* FrancoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6538BDD91E2FEDA3004E9C70 /* FrancoTests.m */; };
+		65A3401E1E8963FC00D98130 /* FrancoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A3401C1E8963FC00D98130 /* FrancoCollectionViewCell.m */; };
+		65A3401F1E8963FC00D98130 /* FrancoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A3401D1E8963FC00D98130 /* FrancoCollectionViewCell.xib */; };
+		65A340211E89692C00D98130 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65A340201E89692C00D98130 /* Main.storyboard */; };
+		65F2B4BC1EA51D7F00E560BB /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F2B4BB1EA51D7F00E560BB /* Timer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +32,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6512E9991E92FD9E007F4A2D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		6512E99B1E931072007F4A2D /* jamesFrancophileLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = jamesFrancophileLaunchScreen.storyboard; sourceTree = "<group>"; };
+		652700D11E83FAC300C6AB00 /* FrancoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrancoCollectionViewController.h; sourceTree = "<group>"; };
+		652700D21E83FAC300C6AB00 /* FrancoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrancoCollectionViewController.m; sourceTree = "<group>"; };
 		6538BDBC1E2FEDA3004E9C70 /* Franco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Franco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6538BDC01E2FEDA3004E9C70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6538BDC21E2FEDA3004E9C70 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6538BDC31E2FEDA3004E9C70 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6538BDC51E2FEDA3004E9C70 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		6538BDC61E2FEDA3004E9C70 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6538BDC91E2FEDA3004E9C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6538BDCB1E2FEDA3004E9C70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6538BDCE1E2FEDA3004E9C70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6538BDD01E2FEDA3004E9C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6538BDD51E2FEDA3004E9C70 /* FrancoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrancoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6538BDD91E2FEDA3004E9C70 /* FrancoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrancoTests.m; sourceTree = "<group>"; };
 		6538BDDB1E2FEDA3004E9C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65A3401B1E8963FC00D98130 /* FrancoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrancoCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		65A3401C1E8963FC00D98130 /* FrancoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrancoCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		65A3401D1E8963FC00D98130 /* FrancoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrancoCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		65A340201E89692C00D98130 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		65F2B4BA1EA51D7F00E560BB /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		65F2B4BB1EA51D7F00E560BB /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +76,8 @@
 		6538BDB31E2FEDA2004E9C70 = {
 			isa = PBXGroup;
 			children = (
+				6512E99B1E931072007F4A2D /* jamesFrancophileLaunchScreen.storyboard */,
+				6512E9991E92FD9E007F4A2D /* Launch Screen.storyboard */,
 				6538BDBE1E2FEDA3004E9C70 /* Franco */,
 				6538BDD81E2FEDA3004E9C70 /* FrancoTests */,
 				6538BDBD1E2FEDA3004E9C70 /* Products */,
@@ -85,9 +100,15 @@
 				6538BDC31E2FEDA3004E9C70 /* AppDelegate.m */,
 				6538BDC51E2FEDA3004E9C70 /* ViewController.h */,
 				6538BDC61E2FEDA3004E9C70 /* ViewController.m */,
-				6538BDC81E2FEDA3004E9C70 /* Main.storyboard */,
+				65F2B4BA1EA51D7F00E560BB /* Timer.h */,
+				65F2B4BB1EA51D7F00E560BB /* Timer.m */,
+				652700D11E83FAC300C6AB00 /* FrancoCollectionViewController.h */,
+				652700D21E83FAC300C6AB00 /* FrancoCollectionViewController.m */,
+				65A3401B1E8963FC00D98130 /* FrancoCollectionViewCell.h */,
+				65A3401C1E8963FC00D98130 /* FrancoCollectionViewCell.m */,
+				65A340201E89692C00D98130 /* Main.storyboard */,
+				65A3401D1E8963FC00D98130 /* FrancoCollectionViewCell.xib */,
 				6538BDCB1E2FEDA3004E9C70 /* Assets.xcassets */,
-				6538BDCD1E2FEDA3004E9C70 /* LaunchScreen.storyboard */,
 				6538BDD01E2FEDA3004E9C70 /* Info.plist */,
 				6538BDBF1E2FEDA3004E9C70 /* Supporting Files */,
 			);
@@ -160,9 +181,11 @@
 				TargetAttributes = {
 					6538BDBB1E2FEDA3004E9C70 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9Q67G7E28V;
 					};
 					6538BDD41E2FEDA3004E9C70 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9Q67G7E28V;
 						TestTargetID = 6538BDBB1E2FEDA3004E9C70;
 					};
 				};
@@ -191,9 +214,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6538BDCF1E2FEDA3004E9C70 /* LaunchScreen.storyboard in Resources */,
+				65A3401F1E8963FC00D98130 /* FrancoCollectionViewCell.xib in Resources */,
 				6538BDCC1E2FEDA3004E9C70 /* Assets.xcassets in Resources */,
-				6538BDCA1E2FEDA3004E9C70 /* Main.storyboard in Resources */,
+				6512E99A1E92FD9E007F4A2D /* Launch Screen.storyboard in Resources */,
+				6512E99C1E931072007F4A2D /* jamesFrancophileLaunchScreen.storyboard in Resources */,
+				65A340211E89692C00D98130 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +238,9 @@
 			files = (
 				6538BDC71E2FEDA3004E9C70 /* ViewController.m in Sources */,
 				6538BDC41E2FEDA3004E9C70 /* AppDelegate.m in Sources */,
+				65A3401E1E8963FC00D98130 /* FrancoCollectionViewCell.m in Sources */,
+				65F2B4BC1EA51D7F00E560BB /* Timer.m in Sources */,
+				652700D31E83FAC300C6AB00 /* FrancoCollectionViewController.m in Sources */,
 				6538BDC11E2FEDA3004E9C70 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,25 +262,6 @@
 			targetProxy = 6538BDD61E2FEDA3004E9C70 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6538BDC81E2FEDA3004E9C70 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6538BDC91E2FEDA3004E9C70 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6538BDCD1E2FEDA3004E9C70 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6538BDCE1E2FEDA3004E9C70 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		6538BDDC1E2FEDA3004E9C70 /* Debug */ = {
@@ -343,9 +352,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 9Q67G7E28V;
 				INFOPLIST_FILE = Franco/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.Franco;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.JamesFrancophile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -354,9 +365,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 9Q67G7E28V;
 				INFOPLIST_FILE = Franco/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.Franco;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.JamesFrancophile;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -365,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9Q67G7E28V;
 				INFOPLIST_FILE = FrancoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.FrancoTests;
@@ -377,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9Q67G7E28V;
 				INFOPLIST_FILE = FrancoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kateowens.FrancoTests;
@@ -404,6 +419,7 @@
 				6538BDE01E2FEDA3004E9C70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6538BDE11E2FEDA3004E9C70 /* Build configuration list for PBXNativeTarget "FrancoTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +428,7 @@
 				6538BDE31E2FEDA3004E9C70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

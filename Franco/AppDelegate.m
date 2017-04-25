@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Timer.h"
 
 @interface AppDelegate ()
 
