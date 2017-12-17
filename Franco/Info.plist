@@ -26,8 +26,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Add a photo from your library or take a photo to Franco!</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Add  photos from your library or camera so you can Franco some stuff!</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Add photos from library or take new photos to Franco</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
