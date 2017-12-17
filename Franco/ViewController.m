@@ -28,7 +28,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setFranco:) name:@"francoNotification" object:nil];
     self.francos = [NSMutableArray array];
     
-   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveFrancoAfterInactivity:) name:@"appInactiveNotification" object:nil];
+    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveFrancoAfterInactivity:) name:@"appInactiveNotification" object:nil];
 }
 
 - (void)setFranco:(NSNotification *)notification {
@@ -118,45 +118,65 @@
 }
 
 - (void)createAlertWithCameraAndLibraryAction {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo" message:@"Add a photo to Franco!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo"
+                                                                   message:@"Add a photo to Franco!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
-    }];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take photo"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                             picker.delegate = self;
+                                                             picker.allowsEditing = YES;
+                                                             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                                             
+                                                             [self presentViewController:picker animated:YES completion:NULL];
+                                                         }];
     
-    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Add from library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
+    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Add from library"
+                                                            style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                                                                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                                picker.delegate = self;
+                                                                picker.allowsEditing = YES;
+                                                                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                                
+                                                                [self presentViewController:picker animated:YES completion:NULL];
+                                                            }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:alert completion:^{
+        }];
     }];
     
     [alert addAction:cameraAction];
     [alert addAction:libraryAction];
+    [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:NULL];
 }
 
 - (void)createAlertWithCameraAction {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo" message:@"Add a photo to Franco!" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo"
+                                                                   message:@"Add a photo to Franco!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-        [self presentViewController:picker animated:YES completion:NULL];
+    UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Take photo"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action) {
+                                                             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                             picker.delegate = self;
+                                                             picker.allowsEditing = YES;
+                                                             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                                             
+                                                             [self presentViewController:picker animated:YES completion:NULL];
+                                                         }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:alert completion:^{
+        }];
     }];
     
     [alert addAction:cameraAction];
+    [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:NULL];
 }
@@ -164,22 +184,44 @@
 - (void)createAlertWithLibraryAction {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add a Photo" message:@"Add a photo to Franco!" preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Add photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    UIAlertAction *libraryAction = [UIAlertAction actionWithTitle:@"Add photo"
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action) {
+                                                              UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                                                              picker.delegate = self;
+                                                              picker.allowsEditing = YES;
+                                                              picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                              
+                                                              [self presentViewController:picker animated:YES completion:NULL];
+                                                          }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
         
-        [self presentViewController:picker animated:YES completion:NULL];
     }];
     
     [alert addAction:libraryAction];
+    [alert addAction:cancelAction];
     
     [self presentViewController:alert animated:YES completion:NULL];
 }
 
 - (void)createErrorAlert {
-    UIAlertController *alert = [UIAlertController]
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Unable to Add Photo"
+                                                                   message:@"Unable to access your camera or photo library."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
+                                                       style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                                                           [self dismissViewControllerAnimated:YES completion:^{
+                                                               
+                                                           }];
+                                                       }];
+    
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:NULL];
 }
 
 //- (void)saveFrancoAfterInactivity {
@@ -211,7 +253,7 @@
 
 - (void)drawFrancoImageWithContextSize:(CGSize)contextSize francoImageView:(UIImageView *)francoImageView {
     CGRect francoImageFrameInView = [self.userImage convertRect:francoImageView.frame fromView:francoImageView.superview];
-
+    
     CGSize userImageViewSize = self.userImage.frame.size;
     
     CGFloat scaleFactor = contextSize.height / userImageViewSize.height;
@@ -232,7 +274,7 @@
 }
 
 
-- (void) createFrancoActivityViewController{
+- (void) createFrancoActivityViewController {
     NSString *francoTextToShare = @"Consider this Franco'd!";
     UIImage *francoImageToShare = [self renderImage];
     
